@@ -21,7 +21,7 @@ class Question(models.Model):
         verbose_name = "Вопрос"
         verbose_name_plural = "Вопросы"
         ordering = ["id"]
-        dt_table = "question_db"
+        db_table = "question_db"
 
     text = models.TextField(verbose_name="текст вопроса")
     type = models.CharField(max_length=30, choices=QuestionTypes, default=TEXT)
@@ -33,7 +33,7 @@ class Answer(models.Model):
         verbose_name = "Ответ"
         verbose_name_plural = "Ответы"
         ordering = ["id"]
-        dt_table = "answer_db"
+        db_table = "answer_db"
 
     question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='question')
     text = models.TextField(verbose_name="текст ответа")

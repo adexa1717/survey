@@ -4,7 +4,7 @@ from .models import User
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    fields = "__all__"
+    fields = ('id', 'password' 'username', 'date_joined', 'poll', 'is_admin')
     readonly_fields = ('id', 'username', 'date_joined')
     search_fields = ['username']
 

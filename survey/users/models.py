@@ -15,7 +15,7 @@ class User(AbstractUser):
         db_table = "user_db"
 
     is_admin = models.BooleanField(default=False)
-    poll = models.ManyToManyField(Poll, null=True)
+    poll = models.ManyToManyField(Poll, blank=True)
 
 
 class UserAnswerQuestion(models.Model):

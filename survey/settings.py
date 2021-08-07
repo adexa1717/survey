@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # third party apps
     "rest_framework",  # utilities for rest apis
+    'rest_framework.authtoken',  # token authentication
     "django_extensions",  # Some nice features like shell_plus
     # your apps
     'survey.users',
@@ -73,6 +74,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'survey.wsgi.application'
 
+AUTH_USER_MODEL = 'users.User'
+
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -103,7 +106,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
 }
 SHELL_PLUS = "ipython"
 
