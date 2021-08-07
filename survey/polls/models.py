@@ -11,9 +11,12 @@ class Poll(models.Model):
         db_table = "polls_db"
 
     name = models.CharField(max_length=150, verbose_name="название")
-    start_date = models.DateTimeField(editable=False, verbose_name="дата старта")
+    start_date = models.DateTimeField(verbose_name="дата старта")
     end_date = models.DateTimeField(verbose_name="дата окончания")
     description = models.TextField(verbose_name="описание")
+
+    def __str__(self):
+        return '{}'.format(self.name)
 
 
 class Question(models.Model):
@@ -25,7 +28,10 @@ class Question(models.Model):
 
     text = models.TextField(verbose_name="текст вопроса")
     type = models.CharField(max_length=30, choices=QuestionTypes, default=TEXT)
-    poll = models.ForeignKey(Poll, on_delete=models.CASCADE, related_name='question')
+    poll = models.ForeignKey(Poll, on_delete=models.CASCADE, related_name='questions')
+
+    def __str__(self):
+        return '{}'.format(self.text)
 
 
 class Answer(models.Model):
@@ -35,5 +41,8 @@ class Answer(models.Model):
         ordering = ["id"]
         db_table = "answer_db"
 
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='question')
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='answers')
     text = models.TextField(verbose_name="текст ответа")
+
+    def __str__(self):
+        return '{}'.format(self.text)

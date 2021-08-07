@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # third party apps
     "rest_framework",  # utilities for rest apis
+    "django_filters",  # for filtering rest endpoints
     'rest_framework.authtoken',  # token authentication
     "django_extensions",  # Some nice features like shell_plus
     # your apps

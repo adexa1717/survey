@@ -40,4 +40,4 @@ class UserAnswerQuestion(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE)
-    new_answer = models.TextField(verbose_name="текст своего ответа")
+    new_answer = models.TextField(verbose_name="текст своего ответа", null=True, blank=True)

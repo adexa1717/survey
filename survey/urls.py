@@ -17,9 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
+from survey.polls.views import PollViewSet, QuestionViewSet, AnswerViewSet
 from survey.users.views import AuthToken
 
 router = DefaultRouter()
+router.register(r'polls', PollViewSet, basename='polls list')
+router.register(r'questions', QuestionViewSet, basename='questions list')
+router.register(r'answers', AnswerViewSet, basename='answers list')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
